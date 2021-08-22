@@ -1,0 +1,1 @@
+Rock, Paper and scissor project by the odin project - fundamentals
