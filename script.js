@@ -1,5 +1,17 @@
 // RANDOM pick pelo computador
 
+
+
+
+
+
+
+
+
+
+
+
+
 function computerPlay() {
     const rockPaperScissor = ['rock', 'paper', 'scissor'];
     const randomPick = Math.floor(Math.random() * rockPaperScissor.length)
@@ -16,7 +28,7 @@ function computerPlay() {
 
 // pergunta qual o a escolha do player
 
-function playerSelect() { 
+/* function playerSelect() { 
     let rawPlayerSelection = prompt('Rock, paper or scissor?').toUpperCase()
 
     //Verificação se o player errou na digitação:
@@ -28,7 +40,7 @@ function playerSelect() {
         
     }
 
-} 
+}  */
 
 // Função para jogar um round de playerSelection() x computerPlay()
 
@@ -36,31 +48,31 @@ function oneRound(playerSelection , computerSelection ) {
  
     if (playerSelection === 'ROCK' && computerSelection === 'SCISSOR' ) {
         playerWins++
-        return ("Player WIN!! Rock win over Scissor")
+        return whoWins = "PLAYER"
 
     } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER' ) {
         computerWins++
-        return ('Computer WIN!! Paper win over Rock')
+        return whoWins = 'Computer'
 
     } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK' ) {
         playerWins++
-        return ("PLAYER WIN !!  Paper win over Rock")        
+        return whoWins = "PLAYER"
 
     } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSOR' ) {
         computerWins++
-        return("Computer WIN!! Scissor wins over Paper")
+        return whoWins = 'Computer '
 
     } else if (playerSelection === 'SCISSOR' && computerSelection === 'ROCK' ){ 
         computerWins++
-        return ("Computer WIN!! Rock wins over Scissor")
+        return whoWins = 'Computer '
 
     } else if (playerSelection === 'SCISSOR' && computerSelection === 'PAPER' ){
         playerWins++
-        return('Player WIN!! Scissor Wins over Paper')       
+        return whoWins = "PLAYER "     
 
     } else if (playerSelection === computerSelection) {
 
-        return ('Players EMPATARAM')
+        return whoWins = "Players empataram"
 
     } else {
 
@@ -72,7 +84,7 @@ function oneRound(playerSelection , computerSelection ) {
 
  // Função game() com 5 rodados e mostrar o vencedor.
 
- function game() {  
+ /* function game() {  
     totalGames = 0
 
     while (totalGames < 5) {
@@ -81,16 +93,85 @@ function oneRound(playerSelection , computerSelection ) {
     }    
 
 
+} */
+
+const rock = document.querySelector('.rock')
+const paper = document.querySelector('.paper')
+const scissor = document.querySelector('.scissor')
+const divContainer = document.querySelector('.results')
+const createP = document.createElement('p')
+const placar = document.querySelector('.placar')
+
+
+
+paper.addEventListener('click', () => {
+    oneRound('PAPER', computerPlay())
+    const createP = document.createElement('p');
+    createP.textContent = `Ganhador foi ${whoWins}`
+    divContainer.appendChild(createP)
+    placar.textContent = `O placar agora está Player: ${playerWins} e pro Computador: ${computerWins}`
+    
+    if (playerWins >= 5) {
+        alert('Player Ganhou')
+        alert('Acabou o jogo ')
+    }
+    
+    if ( computerWins >= 5) {
+        alert('Computer Ganhou')
+    }
+ })
+
+scissor.addEventListener('click', () => {
+     oneRound('SCISSOR', computerPlay())
+     const createP = document.createElement('p');
+     createP.textContent = `Ganhador foi ${whoWins}`
+     divContainer.appendChild(createP)
+     placar.textContent = `O placar agora está Player: ${playerWins} e pro Computador: ${computerWins}`
+     if (playerWins >= 5) {
+        alert('Player Ganhou')
+    }
+    
+    if ( computerWins >= 5) {
+        alert('Computer Ganhou')
+    }
+ })
+
+
+rock.addEventListener('click', () => {
+   oneRound('ROCK', computerPlay())
+   const createP = document.createElement('p');
+   createP.textContent = `Ganhador foi ${whoWins}`
+   divContainer.appendChild(createP)
+   placar.textContent = `O placar agora está Player: ${playerWins} e pro Computador: ${computerWins}`
+   if (playerWins >= 5) {
+    alert('Player Ganhou')
 }
 
+if ( computerWins >= 5) {
+    alert('Computer Ganhou')
+}
+})
 
 
 
 let playerWins = 0
-let computerWins = 0  
+let computerWins = 0   
+let whoWins = 0 
 
-game()
-if ( playerWins > computerWins) {
+
+
+if (playerWins >= 5) {
+    alert('Player Ganhou')
+}
+
+if ( computerWins >= 5) {
+    alert('Computer Ganhou')
+}
+
+/* game() */
+
+
+/* if ( playerWins > computerWins) {
     console.log('O PLAYER GANHOU UHUUUUU!!')
 
 } else if (computerWins > playerWins ) {
@@ -100,13 +181,7 @@ if ( playerWins > computerWins) {
     console.log('EMPATARAM!!!')
 
 }
-
-
-
-
-
-
-
+ */
 
 
 
